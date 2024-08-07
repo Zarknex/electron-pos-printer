@@ -91,11 +91,13 @@ async function renderDataToHTML(event, arg) {
                     applyElementStyles(barcodeWrapperEl,arg.line.style)
                 }else{
                     barcodeWrapperEl.style.display = 'flex';
-                    barcodeWrapperEl.style.justifyContent = arg.line?.position || 'left';
+                    //Added default position -> 'center'
+                    barcodeWrapperEl.style.justifyContent = arg.line?.position || 'center';
                 }
 
                 JsBarcode(`#barCode-${arg.lineIndex}`, arg.line.value, {
-                    // format: "",
+                    //Added format argument
+                    format: arg.line.formatBarCode || "",
                     lineColor: "#000",
                     textMargin: 0,
                     fontOptions: 'bold',
